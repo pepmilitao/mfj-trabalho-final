@@ -45,39 +45,32 @@ pub fn draw_arrow(
         cor,
     );
 
-    match nome {
-        Some(v) => {
-            let ponto_texto;
-            match v.1 {
-                PosTexto::Meio => ponto_texto = ponto_inicial + direcao / 2.0 + perpendicular * 4.0,
-                PosTexto::Final => ponto_texto = ponto_final + perpendicular * 4.0,
-            }
-            draw_handle.draw_text(
-                v.0.as_str(),
-                ponto_texto.get_x() as i32,
-                ponto_texto.get_y() as i32,
-                20,
-                Color::BLACK,
-            );
-        }
-        None => {}
+    if let Some(v) = nome {
+        let ponto_texto = match v.1 {
+            PosTexto::Meio => ponto_inicial + direcao / 2.0 + perpendicular * 4.0,
+            PosTexto::Final => ponto_final + perpendicular * 4.0,
+        };
+        draw_handle.draw_text(
+            v.0.as_str(),
+            ponto_texto.get_x() as i32,
+            ponto_texto.get_y() as i32,
+            20,
+            Color::BLACK,
+        );
     }
 
-    match numeros {
-        Some(grid_spacing) => {
-            let n = (direcao.mag() / grid_spacing as f32).ceil() as i32;
-            for i in 1..n {
-                let ponto_numero =
-                    ponto_inicial + direcao_norm * (grid_spacing * i) as f32 + perpendicular * 4.0;
-                draw_handle.draw_text(
-                    &i.to_string(),
-                    ponto_numero.get_x() as i32,
-                    ponto_numero.get_y() as i32,
-                    20,
-                    cor,
-                );
-            }
+    if let Some(grid_spacing) = numeros {
+        let n = (direcao.mag() / grid_spacing as f32).ceil() as i32;
+        for i in 1..n {
+            let ponto_numero =
+                ponto_inicial + direcao_norm * (grid_spacing * i) as f32 + perpendicular * 4.0;
+            draw_handle.draw_text(
+                &i.to_string(),
+                ponto_numero.get_x() as i32,
+                ponto_numero.get_y() as i32,
+                20,
+                cor,
+            );
         }
-        None => {}
     }
 }

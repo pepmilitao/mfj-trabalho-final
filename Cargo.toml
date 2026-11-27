@@ -1,9 +1,9 @@
 [package]
-name = "matematica_e_fisica_para_jogos"
-version = "0.1.0"
-edition = "2024"
+  name    = "matematica_e_fisica_para_jogos"
+  version = "0.1.0"
+  edition = "2024"
 
 [dependencies]
-rand = "0.10.4"
-raylib = { version = "6.0.0", features = ["wayland"] }
-rayon = "1.12.0"
+  rand   = "0.10.4"
+  raylib = { version = "6.0.0", features = ["wayland"] }
+  rayon  = "1.12.0"

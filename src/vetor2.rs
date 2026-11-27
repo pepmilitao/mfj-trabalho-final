@@ -69,12 +69,11 @@ impl Vetor2 {
     }
 
     pub fn react(&self, n: Self, alpha: f32, beta: f32, is_normalized: bool) -> Self {
-        let vn;
-        if is_normalized {
-            vn = self.projection_normalized(n);
+        let vn = if is_normalized {
+            self.projection_normalized(n)
         } else {
-            vn = self.projection(n);
-        }
+            self.projection(n)
+        };
         let vp = *self - vn;
         vp * alpha - vn * beta
     }

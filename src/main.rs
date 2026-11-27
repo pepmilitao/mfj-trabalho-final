@@ -36,7 +36,7 @@ fn main() {
         // Eixo x
         draw_arrow(
             &mut d,
-            Ponto2::new(grid_spacing as f32, (height - 1 * grid_spacing) as f32),
+            Ponto2::new(grid_spacing as f32, (height * grid_spacing) as f32),
             Vetor2::new(500.0, 0.0),
             1.0,
             Color::BLACK,
@@ -47,10 +47,7 @@ fn main() {
         // Eixo y
         draw_arrow(
             &mut d,
-            Ponto2::new(
-                (1 * grid_spacing) as f32,
-                height as f32 - grid_spacing as f32,
-            ),
+            Ponto2::new(grid_spacing as f32, height as f32 - grid_spacing as f32),
             Vetor2::new(0.0, -400.0),
             1.0,
             Color::BLACK,
